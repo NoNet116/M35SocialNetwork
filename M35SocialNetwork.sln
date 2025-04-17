@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35527.113 d17.12
+VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "M35SocialNetwork", "M35SocialNetwork\M35SocialNetwork.csproj", "{F35CDD98-8B9D-4C4F-BDBF-1B48E97ACD34}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Data", "App.Data\App.Data.csproj", "{4390D37C-F268-4655-BF55-CF5516BA66D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{F35CDD98-8B9D-4C4F-BDBF-1B48E97ACD34}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F35CDD98-8B9D-4C4F-BDBF-1B48E97ACD34}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F35CDD98-8B9D-4C4F-BDBF-1B48E97ACD34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4390D37C-F268-4655-BF55-CF5516BA66D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4390D37C-F268-4655-BF55-CF5516BA66D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4390D37C-F268-4655-BF55-CF5516BA66D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4390D37C-F268-4655-BF55-CF5516BA66D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
