@@ -1,9 +1,15 @@
 using App.Data;
 using App.Data.Models;
+using AutoMapper;
+using M35SocialNetwork.Mapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+var mapperCOnfig = new MapperConfiguration((v) => { v.AddProfile(new MappingProfile()); });
+IMapper mapper = mapperCOnfig.CreateMapper();
+builder.Services.AddSingleton(mapper);
 
 // Настраиваем контекст базы данных
 string connection = builder.Configuration.GetConnectionString("DefaultConnection");
