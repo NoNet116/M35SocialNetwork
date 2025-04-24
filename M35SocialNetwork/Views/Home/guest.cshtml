@@ -1,0 +1,10 @@
+﻿@model App.Data.Models.User
+@{
+    ViewData["Title"] = "Профиль";
+}
+
+<div>
+    <p>Фамилия: @Model.LastName</p>
+    <p>Имя: @Model.FirstName</p>
+    <p>Почта: @Model.Email</p>
+</div>

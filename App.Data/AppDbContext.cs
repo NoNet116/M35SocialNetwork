@@ -8,7 +8,16 @@ namespace App.Data
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
-          //  Database.EnsureCreated();
+            Database.EnsureCreatedAsync();
         }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+           /* builder.ApplyConfiguration(new FriendConfiguration());
+            builder.ApplyConfiguration(new MessageConfuiguration());*/
+        }
+
     }
 }

@@ -1,6 +1,7 @@
 ﻿using App.Data.Models;
 using AutoMapper;
 using M35SocialNetwork.ViewModels.Account;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,12 +22,12 @@ namespace M35SocialNetwork.Controllers
             _signInManager = signInManager;
         }
 
-        [Route("Login")]
-        [HttpGet]
-        public IActionResult Login()
-        {
-            return View("Home/Login");
-        }
+        /* [Route("Login")]
+         [HttpGet]
+         public IActionResult Login()
+         {
+             return View("Home/Login");
+         }*/
 
         [Route("Login")]
         [HttpPost]
@@ -35,9 +36,12 @@ namespace M35SocialNetwork.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = _mapper.Map<User>(model);
 
-                var result = await _signInManager.PasswordSignInAsync(user.UserName, model.Password, model.RememberMe, false);
+                var userModel = _mapper.Map<User>(model);
+                var user = await _userManager.FindByEmailAsync(userModel.Email);
+                var result = await _signInManager.PasswordSignInAsync(user, model.Password, model.RememberMe, false);
+
+                
                 if (result.Succeeded)
                 {
                     if (!string.IsNullOrEmpty(model.ReturnUrl) && Url.IsLocalUrl(model.ReturnUrl))
@@ -46,7 +50,7 @@ namespace M35SocialNetwork.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Account", "AccountManager");
                     }
                 }
                 else
@@ -54,8 +58,12 @@ namespace M35SocialNetwork.Controllers
                     ModelState.AddModelError("", "Неправильный логин и (или) пароль");
                 }
             }
+           
+
+
             return View("Views/Home/Index.cshtml");
         }
+
 
         [Route("Logout")]
         [HttpPost]
@@ -64,6 +72,22 @@ namespace M35SocialNetwork.Controllers
         {
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
+        }
+
+        [Authorize]
+        [Route("Account")]
+        [HttpGet]
+        public async Task<IActionResult> Account()
+        {
+             var user = User;
+
+             var result = await _userManager.GetUserAsync(user);
+
+            var model = new AccountViewModel(result);
+
+            /*model.Friends = await GetAllFriend(model.User);*/
+
+            return View("Views/AccountManager/index.cshtml", model);
         }
     }
 }

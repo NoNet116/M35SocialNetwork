@@ -6,12 +6,16 @@ namespace M35SocialNetwork.ViewModels.Account
     public class RegisterViewModel
     {
         [Required]
+        [Display(Name = "Фамилия")]
+        public string LastName { get; set; }
+
+        [Required]
         [Display(Name = "Имя")]
         public string FirstName { get; set; }
 
-        [Required]
-        [Display(Name = "Фамилия")]
-        public string LastName { get; set; }
+        
+        [Display(Name = "Отчество")]
+        public string? MiddleName { get; set; }
 
         [Required]
         [Display(Name = "Email")]
@@ -37,7 +41,9 @@ namespace M35SocialNetwork.ViewModels.Account
         public string PasswordConfirm { get; set; }
 
         [Required]
-        [Display(Name = "Никнейм")]
-        public string Login { get; set; }
+        [Display(Name = "Логин")]
+        [StringLength(15, ErrorMessage = "Поле \"{0}\" должно иметь минимум {2} и максимум {1} символов.", MinimumLength = 5)]
+        public string UserName { get; set; }
+
     }
 }

@@ -15,8 +15,6 @@ namespace M35SocialNetwork.ViewModels.Account
 
         public bool RememberMe { get; set; }
 
-        public string PhoneNumber { get; set; }
-        public bool TwoFactor { get; set; }
-        public string ReturnUrl { get; set; }
+        public string? ReturnUrl { get; set; }
     }
 }

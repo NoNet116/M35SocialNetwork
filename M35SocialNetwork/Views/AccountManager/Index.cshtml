@@ -1,0 +1,13 @@
+﻿@model M35SocialNetwork.ViewModels.Account.AccountViewModel
+@{
+    ViewData["Title"] = "Профиль";
+}
+
+<div>
+    <form method="post" asp-controller="AccountManager" asp-action="Logout">
+        <button type="submit">Выход</button>
+    </form>
+    <p>Фамилия: @Model.User.LastName</p>
+    <p>Имя: @Model.User.FirstName</p>
+    <p>Почта: @Model.User.Email</p>
+</div>
